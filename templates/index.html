@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="icon" href="{% static 'assets/img/logo.jpg' %}">
+	<title>Library Management System</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+ 	<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+
+
+    <style>
+        h1{
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            color: white;
+            font-size: 60px;
+            font-weight: bolder;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 10px;
+
+        }
+        body{
+            background-image:url("{% static 'assets/img/wallpaper.jpg' %}") ;
+        }
+
+    </style>
+
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand btn btn-success" href="{% url 'home' %}">Home</a>
+      </div>
+      <ul class="navmenu" id="navmenu">
+        <li><a href="{% url 'booksearch' %}">Book Search</a></li>
+        <li><a href="{% url 'checkinbooks' %}">Check-In</a></li>
+        <li><a href="{% url 'payfine' %}">Pay Fine</a></li>
+        <li><a href="{% url 'addborrowers' %}">Add Borrowers</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+	<section align = "center">
+		<h1>Welcome To Library Management System!</h1>
+		<img src="{% static 'static/assets/homepage/1.jpeg' %}" alt="Library Image" width="100%" height="100%">
+	</section>
+</body>
+</html>

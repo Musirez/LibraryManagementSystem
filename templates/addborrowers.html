@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Borrowers</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load static %}
+    <link rel="icon" href="{% static 'assets/members/avatar.png' %}">
+	<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+ 	<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/messagestyle.css' %}">
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand btn btn-success" href="{% url 'home' %}">Home</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li><a href="{% url 'booksearch' %}">Book Search</a></li>
+	      <li><a href="{% url 'checkinbooks' %}">Check-In</a></li>
+	      <li><a href="{% url 'payfine' %}">Pay Fine</a></li>
+	      <li><a href="{% url 'addborrowers' %}">Add Borrowers</a></li>
+	    </ul>
+	  </div>
+	</nav>
+	<section align="center">
+		<h1>Please fill the information below</h1>
+		<table align="center">
+			<form align="center" action="{% url 'addborrowers' %}" method="POST" class="form-inline">
+				<div class="form-group">
+					{% csrf_token %}
+					<tr>
+						<td>Full Name</td>
+						<td><input type="text" name="fname" class="form-control" required="1" /></td>
+					</tr>
+					<tr>
+						<td>Ssn</td>
+						<td><input type="text" name="ssn" class="form-control" required="1" placeholder="" /></td>
+					</tr>
+                    <tr>
+						<td>Address</td>
+						<td><input type="text" name="address" class="form-control" required="1" placeholder="optional" /></td>
+					</tr>
+
+					<tr>
+						<td>Phone</td>
+						<td><input type="text" name="phone" class="form-control" required="1" /></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"><input type="submit" class="btn btn-success" value="Add" name="addborrower"></td>
+					</tr>
+				</div>
+			</form>
+		</table>
+
+		{% if ssnexist %}
+			Ssn already exists, please try again
+		{% else %}
+			{% if message %}
+				{{message}}
+			{% endif %}
+		{% endif %}
+
+        {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li class="message {{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+
+	</section>
+</body>
+</html>
